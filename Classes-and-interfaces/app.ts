@@ -35,7 +35,7 @@
 // PRIVATE AND PUBLIC ACCESS MODIFIERS
 
 class Department {
-    private employees: string[] = [];
+    protected employees: string[] = [];
 
     constructor(private readonly id: number, public name: string ) {}
 
@@ -59,11 +59,32 @@ class ITDepartment extends Department {
     }
 }
 
-const it = new ITDepartment(2, ['Max']);
-it.addEmployee('Max')
-it.addEmployee('Manu')
+// const it = new ITDepartment(2, ['Max']);
+// it.addEmployee('Max')
+// it.addEmployee('Manu')
+//
+// it.describe();
+// it.printEmployeeInformation();
 
-it.describe();
-it.printEmployeeInformation();
+class AccountingDepartment extends Department {
+    constructor(id: number, private reports: string[]) {
+        super(id, 'Accounting')
+    }
 
-console.log(it)
+    addEmployee(name: string) {
+        this.employees.push(name)
+    }
+
+    addReports(text: string) {
+        this.reports.push(text)
+    }
+
+    printReports() {
+        console.log(this.reports)
+    }
+}
+
+const accounting = new AccountingDepartment(1, ['accounting'])
+accounting.addReports('report 2')
+accounting.addReports('report 3')
+accounting.printReports()
