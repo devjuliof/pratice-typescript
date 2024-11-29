@@ -35,15 +35,12 @@
 // PRIVATE AND PUBLIC ACCESS MODIFIERS
 
 class Department {
-    name: string;
     private employees: string[] = [];
 
-    constructor(n: string) {
-        this.name = n;
-    }
+    constructor(private id: number, public name: string ) {}
 
     describe(this: Department) {
-        console.log('Department: ' + this.name)
+        console.log('Department: ' + this.name + ', Id: ' + this.id)
     }
 
     addEmployee(employee: string) {
@@ -56,7 +53,7 @@ class Department {
     }
 }
 
-const accounting = new Department('Accounting');
+const accounting = new Department(2, 'Accounting');
 accounting.addEmployee('Max')
 accounting.addEmployee('Manu')
 
