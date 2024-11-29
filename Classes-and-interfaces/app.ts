@@ -67,8 +67,24 @@ class ITDepartment extends Department {
 // it.printEmployeeInformation();
 
 class AccountingDepartment extends Department {
+    private lastReport: string;
+
     constructor(id: number, private reports: string[]) {
         super(id, 'Accounting')
+        this.lastReport = reports[0]
+    }
+
+    get mostRecentReport() {
+        if (this.lastReport) {
+            return this.reports[0]
+        }
+        if(!this.lastReport) {
+            throw new Error('not exist')
+        }
+    }
+
+    set mostRecentReport(value: string) {
+        this.addReports(value)
     }
 
     addEmployee(name: string) {
@@ -84,7 +100,7 @@ class AccountingDepartment extends Department {
     }
 }
 
-const accounting = new AccountingDepartment(1, ['accounting'])
-accounting.addReports('report 2')
-accounting.addReports('report 3')
-accounting.printReports()
+const accounting = new AccountingDepartment(1, ['report 1'])
+accounting.addReports('report 1')
+console.log(accounting.mostRecentReport)
+console.log(accounting)
