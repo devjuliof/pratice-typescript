@@ -53,9 +53,17 @@ class Department {
     }
 }
 
-const accounting = new Department(2, 'Accounting');
-accounting.addEmployee('Max')
-accounting.addEmployee('Manu')
+class ITDepartment extends Department {
+    constructor(id: number, public admins: string[]) {
+        super(id, 'IT');
+    }
+}
 
-accounting.describe();
-accounting.printEmployeeInformation();
+const it = new ITDepartment(2, ['Max']);
+it.addEmployee('Max')
+it.addEmployee('Manu')
+
+it.describe();
+it.printEmployeeInformation();
+
+console.log(it)
