@@ -66,41 +66,31 @@ class ITDepartment extends Department {
 // it.describe();
 // it.printEmployeeInformation();
 
-class AccountingDepartment extends Department {
-    private lastReport: string;
-
-    constructor(id: number, private reports: string[]) {
-        super(id, 'Accounting')
-        this.lastReport = reports[0]
-    }
-
-    get mostRecentReport() {
-        if (this.lastReport) {
-            return this.reports[0]
-        }
-        if(!this.lastReport) {
-            throw new Error('not exist')
-        }
-    }
-
-    set mostRecentReport(value: string) {
-        this.addReports(value)
-    }
-
-    addEmployee(name: string) {
-        this.employees.push(name)
-    }
-
-    addReports(text: string) {
-        this.reports.push(text)
-    }
-
-    printReports() {
-        console.log(this.reports)
-    }
-}
-
-const accounting = new AccountingDepartment(1, ['report 1'])
-accounting.addReports('report 1')
-console.log(accounting.mostRecentReport)
-console.log(accounting)
+// class AccountingDepartment extends Department {
+//     private lastReport: string;
+//
+//     constructor(id: number, private reports: string[]) {
+//         super(id, 'Accounting')
+//         this.lastReport = reports[0]
+//     }
+//
+//     set mostRecentReport(value: string) {
+//         this.addReports(value)
+//     }
+//
+//     addEmployee(name: string) {
+//         this.employees.push(name)
+//     }
+//
+//     addReports(text: string) {
+//         this.reports.push(text)
+//     }
+//
+//     printReports() {
+//         console.log(this.reports)
+//     }
+// }
+//
+// accounting.addReports('report 1')
+// console.log(accounting.mostRecentReport)
+// console.log(accounting)
